@@ -1,10 +1,12 @@
 'use strict';
 
+var userName = prompt('What is your name?');
+
 // ask user if they are ready to take the quiz
-var answer1 = confirm('Are you ready to take a quiz about Puffy and Spencer, two super cool cats?');
+var answer1 = confirm(userName + ', are you ready to take a quiz about Puffy and Spencer, two super cool cats?');
 
 if (answer1) {
-  console.log('User is ready to take a quiz about cats!');
+  console.log(userName + ' is ready to take a quiz about cats!');
   alert('Great, get ready to answer five quick questions. Please answer Y for Yes or N for No.');
 }
 else {
