@@ -15,26 +15,29 @@ else {
 
 // repeated language used in questions, stored as variables
 var yesOrNo = 'Y or N: ';
-var userAnswered = 'User answered ';
+var userAnswered = userName + ' answered ';
 var incorrect = 'Incorrect. ';
 var correct = 'Correct! ';
+var tryAgain = 'Sorry, that\'s incorrect! Try again.';
 
 // Quiz questions
-var quizQuestion1 = 'Are Puffy and Spencer are from Spokane?';
+var quizQuestion1 = 'Are Puffy and Spencer are from Yakima?';
 var quizQuestion2 = 'Does Spencer prefer kibble?';
 var quizQuestion3 = 'Puffy is a Norwegian Forest cat?';
 var quizQuestion4 = 'Spencer is teaching himself English?';
 var quizQuestion5 = 'Puffy and Spencer are friends?';
+var quizQuestion6 = 'How many cats were living in the house with Puffy and Spencer in Yakima?';
 
 // Quiz answers to be displayed later
-var quizAnswer1 = 'They were rescued from a benevolent hoarding situation in Spokane and brought to a shelter in Seattle, when I adopted them.';
+var quizAnswer1 = 'They were rescued from a benevolent hoarding situation in Yakima and brought to a shelter in Seattle, when I adopted them.';
 var quizAnswer2 = 'Spencer strongly prefers canned food.';
 var quizAnswer3 = 'Puffy is a Maine Coon cat.';
 var quizAnswer4 = 'Spencer seems to be learning English. He yells \"HELLO!\" with alarming frequency and volume.';
 var quizAnswer5 = 'They\'re best described as frenemies.';
+var quizAnswer6 = 'They were rescued from a house with 26 cats.';
 
 // Quiz prompts, console log of user answers,and assigment of quiz input variables
-var quizInput1 = prompt(yesOrNo + quizQuestion1).toUpperCase();
+/* var quizInput1 = prompt(yesOrNo + quizQuestion1).toUpperCase();
 console.log(userAnswered + quizInput1);
 if (quizInput1 === 'Y' || quizInput1 === 'YES') {
   alert(correct);
@@ -88,11 +91,48 @@ else {
   alert(incorrect);
   quizInput5 = 'incorrect';
 }
+*/
+
+var index;
+for (index = 0; index < 4; index++) {
+  var quizInput6 = parseInt(prompt(quizQuestion6));
+  console.log(userAnswered + quizInput6);
+  if (quizInput6 === 26) {
+    alert(correct);
+    break;
+  }
+  else {
+    alert(tryAgain + 'Attempts remaining: ' + (3 - index));
+  }
+};
+
+/*var quizInput6 = parseInt(prompt(quizQuestion6));
+console.log(userAnswered + quizInput6);
+if (quizInput6 === 26) {
+  alert(correct);
+  quizInput6 = 'correct';
+}
+else {
+  prompt(tryAgain);
+  var index;
+  for (index = 0; index > 4; index++) {
+    quizInput6 = prompt(tryAgain);
+    if (quizInput6 === 26) {
+      alert(correct);
+      quizInput6 = 'correct';
+      console.log(userAnswered + quizInput6);
+    }
+    else {
+      prompt(tryAgain);
+    }
+  }
+}*/
 
 // Show results to user in HTML
 document.write('<img src="images/cats5.png" /><p class="intro">Now that you\'ve taken the quiz, here\'s some more information about these two wonderful cats.</p><hr />');
-document.write('<p>Question 1: ' + quizAnswer1 + '<br />(Your answer: ' + quizInput1 + ')</p>');
+/*document.write('<p>Question 1: ' + quizAnswer1 + '<br />(Your answer: ' + quizInput1 + ')</p>');
 document.write('<p>Question 2: ' + quizAnswer2 + '<br />(Your answer: ' + quizInput2 + ')</p>');
 document.write('<p>Question 3: ' + quizAnswer3 + '<br />(Your answer: ' + quizInput3 + ')</p>');
 document.write('<p>Question 4: ' + quizAnswer4 + '<br />(Your answer: ' + quizInput4 + ')</p>');
 document.write('<p>Question 5: ' + quizAnswer5 + '<br />(Your answer: ' + quizInput5 + ')</p>');
+*/document.write('<p>Question 6: ' + quizAnswer6 + '<br />(Your answer: ' + quizInput6 + ')</p>');
