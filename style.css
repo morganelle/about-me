@@ -1,15 +1,7 @@
-h1 {
-  font-family: Helvetica;
+* {
+  font-family: Times;
 }
 
-p {
-  color: gray;
-}
-
-.more-content {
-  background-color: #0000ff;
-}
-
-#something-else {
-  border: 5px dashed #ff0000;
+p.intro {
+  font-size: 1.1em;
 }
