@@ -4,11 +4,11 @@
 var answer1 = confirm('Are you ready to take a quiz about Puffy and Spencer, two super cool cats?');
 
 if (answer1) {
-  console.log('Woooooooooooo, user is ready to take a quiz about cats');
-  alert('Great, get ready to answer five random questions. Please answer Y for Yes or N for No.');
+  console.log('User is ready to take a quiz about cats!');
+  alert('Great, get ready to answer five quick questions. Please answer Y for Yes or N for No.');
 }
 else {
-  console.log('Sorry, user is not ready for a quiz on cats.');
+  console.log('Sadly, user is not ready for a quiz on cats.');
 }
 
 // repeated language used in questions, stored as variables
@@ -24,7 +24,7 @@ var quizQuestion3 = 'Puffy is a Norwegian Forest cat?';
 var quizQuestion4 = 'Spencer is teaching himself English?';
 var quizQuestion5 = 'Puffy and Spencer are friends?';
 
-// Quiz answers
+// Quiz answers to be displayed later
 var quizAnswer1 = 'They were rescued from a benevolent hoarding situation in Spokane and brought to a shelter in Seattle, when I adopted them.';
 var quizAnswer2 = 'Spencer strongly prefers canned food.';
 var quizAnswer3 = 'Puffy is a Maine Coon cat.';
