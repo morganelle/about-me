@@ -34,7 +34,7 @@ var quizAnswer5 = 'They\'re best described as frenemies.';
 // Quiz prompts, console log of user answers,and assigment of quiz input variables
 var quizInput1 = prompt(yesOrNo + quizQuestion1).toUpperCase();
 console.log(userAnswered + quizInput1);
-if (quizInput1 === 'Y' || quizInput1 === 'y' || quizInput1 === 'Yes' || quizInput1 === 'yes' ) {
+if (quizInput1 === 'Y' || quizInput1 === 'YES') {
   alert(correct);
   quizInput1 = 'correct';
 }
@@ -45,7 +45,7 @@ else {
 
 var quizInput2 = prompt(yesOrNo + quizQuestion2).toUpperCase();
 console.log(userAnswered + quizInput2);
-if (quizInput2 === 'N' || quizInput2 === 'n' || quizInput2 === 'No' || quizInput2 === 'no' ) {
+if (quizInput2 === 'N' || quizInput2 === 'NO') {
   alert(correct);
   quizInput2 = 'correct';
 }
@@ -56,7 +56,7 @@ else {
 
 var quizInput3 = prompt(yesOrNo + quizQuestion3).toUpperCase();
 console.log(userAnswered + quizInput3);
-if (quizInput3 === 'N' || quizInput3 === 'n' || quizInput3 === 'No' || quizInput3 === 'no' ) {
+if (quizInput3 === 'N' || quizInput3 === 'NO') {
   alert(correct);
   quizInput3 = 'correct';
 }
@@ -67,7 +67,7 @@ else {
 
 var quizInput4 = prompt(yesOrNo + quizQuestion4).toUpperCase();
 console.log(userAnswered + quizInput4);
-if (quizInput4 === 'Y' || quizInput4 === 'y' || quizInput4 === 'Yes' || quizInput4 === 'yes' ) {
+if (quizInput4 === 'Y' || quizInput4 === 'YES') {
   alert(correct);
   quizInput4 = 'correct';
 }
@@ -78,7 +78,7 @@ else {
 
 var quizInput5 = prompt(yesOrNo + quizQuestion5).toUpperCase();
 console.log(userAnswered + quizInput5);
-if (quizInput5 === 'N' || quizInput5 === 'n' || quizInput5 === 'No' || quizInput5 === 'no' ) {
+if (quizInput5 === 'N' || quizInput5 === 'NO') {
   alert(correct);
   quizInput5 = 'correct';
 }
