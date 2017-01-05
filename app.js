@@ -7,11 +7,11 @@ var answer1 = confirm(userName + ', are you ready to take a quiz about the devel
 
 if (answer1) {
   console.log(userName + ' is ready to take a quiz about cats!');
-  alert('Great, get ready to answer seven quick questions.');
+  alert('Great, get ready to answer eight quick questions.');
 }
 else {
   console.log('Sadly,' + userName + ' is not ready for a quiz on cats.');
-  alert('That\'s too bad!');
+  alert('That\'s too bad! At the developer\'s skill level, you\'ll be taking the quiz anyway.');
 }
 
 // repeated language used in questions, stored as variables
