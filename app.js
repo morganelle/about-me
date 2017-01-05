@@ -14,14 +14,13 @@ var quizQuestions = ['Are Puffy and Spencer are from Yakima?','Does Spencer pref
 // Quiz answers to be displayed later
 var quizAnswers = ['They were rescued from a benevolent hoarding situation in Yakima and brought to a shelter in Seattle, when I adopted them.','Spencer strongly prefers canned food.','Puffy is a Maine Coon cat.','Spencer seems to be learning English. He yells \"HELLO!\" with alarming frequency and volume.','They\'re best described as frenemies.','They were rescued from a house with 26 cats.','They\'re both black, brown, and grey or gray.','Number of treats they\'ll receive today: '];
 var quizAnswer7 = ['black','grey','gray','brown'];
-var quizAnswer8 = Math.round(Math.random() * 20);
+var quizAnswer8 = Math.floor(Math.random() * 20) + 1;
 
 // Count correct answers
 var countCorrect = 0;
 
+// Ask user their name and if they are ready to take the quiz
 var userName = prompt('What is your name?');
-
-// ask user if they are ready to take the quiz
 var answer1 = confirm(userName + ', are you ready to take a quiz about the developer\'s cats, Puffy and Spencer?');
 
 if (answer1) {
@@ -93,8 +92,7 @@ if (answer1) {
   }
 
   // Quiz question 6
-  var index6;
-  for (index6 = 0; index6 < 4; index6++) {
+  for (var index6 = 0; index6 < 4; index6++) {
     var quizInput6 = parseInt(prompt(quizQuestions[5]));
     console.log(userAnswered + quizInput6);
     if (quizInput6 === 26) {
@@ -118,8 +116,7 @@ if (answer1) {
   };
 
   //Quiz question 7; outer for loop permits users 6 incorrect tries
-  var index7;
-  for (index7 = 0; index7 < 6; index7++) {
+  for (var index7 = 0; index7 < 6; index7++) {
     var quizInput7 = prompt(quizQuestions[6]).toLowerCase();
     console.log(userAnswered + quizInput7);
     //Inner for loop and variables that compares quizInput7 with quizAnswer7 array items
