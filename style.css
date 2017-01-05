@@ -1,7 +1,21 @@
 * {
-  font-family: Times;
+  font-family: Arial;
+}
+
+body {
+  width:60%;
+  min-width: 400px;
+  padding: 0px 30px;
 }
 
 p.intro {
   font-size: 1.1em;
+}
+
+p.question {
+  background-color: #eeeeee;
+}
+
+p#score {
+  border: 1px solid purple;
 }

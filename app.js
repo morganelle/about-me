@@ -15,19 +15,20 @@ else {
 }
 
 // repeated language used in questions, stored as variables
-var yesOrNo = 'Y or N: ';
-var userAnswered = userName + ' answered ';
-var incorrect = 'Incorrect. ';
-var correct = 'Correct! ';
+var yesOrNo = 'Yes or no: ';
+var userAnswered = 'User answered ';
+var incorrect = 'Incorrect.';
+var correct = 'Correct!';
 var tooMany = 'That\'s too many! ';
 var tooFew = 'That\'s too few! ';
 
 // Quiz questions
-var quizQuestions = ['Are Puffy and Spencer are from Yakima?','Does Spencer prefer kibble?','Puffy is a Norwegian Forest cat?','Spencer is teaching himself English?','Are Puffy and Spencer are friends?','How many cats were living in the house Puffy and Spencer were rescued from?','What colors are Puffy and Spencer?'];
+var quizQuestions = ['Are Puffy and Spencer are from Yakima?','Does Spencer prefer kibble?','Puffy is a Norwegian Forest cat?','Spencer is teaching himself English?','Are Puffy and Spencer are friends?','How many cats were living in the house Puffy and Spencer were rescued from?','What colors are Puffy and Spencer?','The developer is capricious and likes to use Math.random() to determine how many treats the kitties will receive each day. How many do you think they\'ll get today?'];
 
 // Quiz answers to be displayed later
-var quizAnswers = ['They were rescued from a benevolent hoarding situation in Yakima and brought to a shelter in Seattle, when I adopted them.','Spencer strongly prefers canned food.','Puffy is a Maine Coon cat.','Spencer seems to be learning English. He yells \"HELLO!\" with alarming frequency and volume.','They\'re best described as frenemies.','They were rescued from a house with 26 cats.',['black','grey','brown']];
+var quizAnswers = ['They were rescued from a benevolent hoarding situation in Yakima and brought to a shelter in Seattle, when I adopted them.','Spencer strongly prefers canned food.','Puffy is a Maine Coon cat.','Spencer seems to be learning English. He yells \"HELLO!\" with alarming frequency and volume.','They\'re best described as frenemies.','They were rescued from a house with 26 cats.','They\'re both black, grey, and brown.','Number of treats they\'ll receive today: '];
 var quizAnswer7 = ['black','grey','brown'];
+var quizAnswer8 = Math.round(Math.random() * 20);
 
 // Count correct answers
 var countCorrect = 0;
@@ -64,9 +65,11 @@ console.log(userAnswered + quizInput3);
 if (quizInput3 === 'N' || quizInput3 === 'NO') {
   alert(correct);
   countCorrect++;
+  console.log(countCorrect);
 }
 else {
   alert(incorrect);
+  console.log(countCorrect);
 }
 
 // Quiz question 4
@@ -75,9 +78,11 @@ console.log(userAnswered + quizInput4);
 if (quizInput4 === 'Y' || quizInput4 === 'YES') {
   alert(correct);
   countCorrect++;
+  console.log(countCorrect);
 }
 else {
   alert(incorrect);
+  console.log(countCorrect);
 }
 
 // Quiz question 5
@@ -86,9 +91,11 @@ console.log(userAnswered + quizInput5);
 if (quizInput5 === 'N' || quizInput5 === 'NO') {
   alert(correct);
   countCorrect++;
+  console.log(countCorrect);
 }
 else {
   alert(incorrect);
+  console.log(countCorrect);
 }
 
 // Quiz question 6
@@ -100,6 +107,7 @@ for (index6 = 0; index6 < 4; index6++) {
     alert(correct);
     console.log(userAnswered + quizInput6);
     countCorrect++;
+    console.log(countCorrect);
     break;
   }
   else {
@@ -115,11 +123,12 @@ for (index6 = 0; index6 < 4; index6++) {
   }
 };
 
-//Quiz question 7
+//Quiz question 7; outer for loop permits users 6 incorrect tries
 var index7;
 for (index7 = 0; index7 < 6; index7++) {
   var quizInput7 = prompt(quizQuestions[6]).toLowerCase();
   console.log(userAnswered + quizInput7);
+  //Inner for loop and variables that compares quizInput7 with quizAnswer7 array items
   var subIndex7;
   var isCorrect = false;
   for (subIndex7 = 0; subIndex7 < 3; subIndex7++) {
@@ -129,19 +138,35 @@ for (index7 = 0; index7 < 6; index7++) {
       isCorrect = true;
     }
   }
+  // If statement that breaks outer for loop if quizInput7 equals quizAnswer7
   if (isCorrect === true) {
     countCorrect++;
+    console.log(countCorrect);
     break;
   }
 }
 
+// Quiz question 8
+var quizInput8 = parseInt(prompt(quizQuestions[7]));
+console.log(userAnswered + quizInput8);
+if (quizInput8 === quizAnswer8) {
+  console.log(correct);
+  countCorrect++;
+  console.log(countCorrect);
+}
+else {
+  console.log(incorrect);
+  console.log(countCorrect);
+}
+
 // Show results to user in HTML
 document.write('<img src="images/cats5.png" /><p class="intro">Now that you\'ve taken the quiz, here\'s some more information about these two wonderful cats.</p><hr />');
-document.write('<p>Question 1: ' + quizQuestions[0] + '<br />Answer: ' + quizAnswers[0] + '<br />(Your answer: ' + quizInput1 + ')</p>');
-document.write('<p>Question 2: ' + quizQuestions[1] + '<br />Answer: ' + quizAnswers[1] + '<br />(Your answer: ' + quizInput2 + ')</p>');
-document.write('<p>Question 3: ' + quizQuestions[2] + '<br />Answer: ' + quizAnswers[2] + '<br />(Your answer: ' + quizInput3 + ')</p>');
-document.write('<p>Question 4: ' + quizQuestions[3] + '<br />Answer: ' + quizAnswers[3] + '<br />(Your answer: ' + quizInput4 + ')</p>');
-document.write('<p>Question 5: ' + quizQuestions[4] + '<br />Answer: ' + quizAnswers[4] + '<br />(Your answer: ' + quizInput5 + ')</p>');
-document.write('<p>Question 6: ' + quizQuestions[5] + '<br />Answer: ' + quizAnswers[5] + '<br />(Your answer: ' + quizInput6 + ')</p>');
-document.write('<p>Question 7: ' + quizQuestions[6] + '<br />Answer: ' + quizAnswers[6] + '<br />(Your answer: ' + quizInput7 + ')</p>');
-document.write('<p>Your score: ' + countCorrect + '/7</p>');
+document.write('<p class="question">Question 1: ' + quizQuestions[0] + '<br />Answer: ' + quizAnswers[0] + '<br />(Your answer: ' + quizInput1 + ')</p>');
+document.write('<p class="question">Question 2: ' + quizQuestions[1] + '<br />Answer: ' + quizAnswers[1] + '<br />(Your answer: ' + quizInput2 + ')</p>');
+document.write('<p class="question">Question 3: ' + quizQuestions[2] + '<br />Answer: ' + quizAnswers[2] + '<br />(Your answer: ' + quizInput3 + ')</p>');
+document.write('<p class="question">Question 4: ' + quizQuestions[3] + '<br />Answer: ' + quizAnswers[3] + '<br />(Your answer: ' + quizInput4 + ')</p>');
+document.write('<p class="question">Question 5: ' + quizQuestions[4] + '<br />Answer: ' + quizAnswers[4] + '<br />(Your answer: ' + quizInput5 + ')</p>');
+document.write('<p class="question">Question 6: ' + quizQuestions[5] + '<br />Answer: ' + quizAnswers[5] + '<br />(Your answer: ' + quizInput6 + ')</p>');
+document.write('<p class="question">Question 7: ' + quizQuestions[6] + '<br />Answer: ' + quizAnswers[6] + '<br />(Your answer: ' + quizInput7 + ')</p>');
+document.write('<p class="question">Question 8: ' + quizQuestions[7] + '<br />Answer: ' + quizAnswers[7] + quizAnswer8 + '<br />(Your answer: ' + quizInput8 + ')</p>');
+document.write('<p id="score">Your score: ' + countCorrect + '/8</p>');
