@@ -7,6 +7,8 @@ var incorrect = 'Incorrect.';
 var correct = 'Correct!';
 var tooMany = 'That\'s too many! ';
 var tooFew = 'That\'s too few! ';
+var invalidAnswer = 'Your answer was not valid, please try again.';
+var quizInput;
 
 // Quiz questions
 var quizQuestions = ['Are Puffy and Spencer are from Yakima?','Does Spencer prefer kibble?','Puffy is a Norwegian Forest cat?','Spencer is teaching himself English?','Are Puffy and Spencer are friends?','How many cats were living in the house Puffy and Spencer were rescued from?','What colors are Puffy and Spencer? Name one.','The developer is capricious and likes to use Math.random() to determine how many treats the kitties will receive each day. How many do you think they\'ll get today?'];
@@ -17,114 +19,81 @@ var quizAnswer7 = ['black','grey','gray','brown'];
 var quizAnswer8 = Math.floor(Math.random() * 20) + 1;
 
 // Count correct answers
+var quizAns = [['y', 'yes'],['n', 'no'],['n', 'no'],['y', 'yes'],['n', 'no']];
+var possibleAnswers = ['y', 'yes', 'n', 'no'];
 var countCorrect = 0;
+var valid = false;
 
 // Ask user their name and if they are ready to take the quiz
 var userName = prompt('What is your name?');
 var answer1 = confirm(userName + ', are you ready to take a quiz about the developer\'s cats, Puffy and Spencer?');
 
 if (answer1) {
-  console.log(userName + ' is ready to take a quiz about cats!');
-  alert('Great, get ready to answer eight quick questions.');
-  /// Quiz question 1
-  var quizInput1 = prompt(yesOrNo + quizQuestions[0]).toUpperCase();
-  console.log(userAnswered + quizInput1);
-  if (quizInput1 === 'Y' || quizInput1 === 'YES') {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
+  //function to validate whether the user entered a usable answer
+  function validAnswer() {
+    for (var vindex = 0; vindex < possibleAnswers.length; vindex++) {
+      if (quizInput === possibleAnswers[vindex]) {
+        valid = true;
+        console.log('Validated answer.');
+      }
+    }
   }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
-  }
-
-  // Quiz question 2
-  var quizInput2 = prompt(yesOrNo + quizQuestions[1]).toUpperCase();
-  console.log(userAnswered + quizInput2);
-  if (quizInput2 === 'N' || quizInput2 === 'NO') {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
-  }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
-  }
-
-  // Quiz question 3
-  var quizInput3 = prompt(yesOrNo + quizQuestions[2]).toUpperCase();
-  console.log(userAnswered + quizInput3);
-  if (quizInput3 === 'N' || quizInput3 === 'NO') {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
-  }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
-  }
-
-  // Quiz question 4
-  var quizInput4 = prompt(yesOrNo + quizQuestions[3]).toUpperCase();
-  console.log(userAnswered + quizInput4);
-  if (quizInput4 === 'Y' || quizInput4 === 'YES') {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
-  }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
-  }
-
-  // Quiz question 5
-  var quizInput5 = prompt(yesOrNo + quizQuestions[4]).toUpperCase();
-  console.log(userAnswered + quizInput5);
-  if (quizInput5 === 'N' || quizInput5 === 'NO') {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
-  }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
-  }
-
-  // Quiz question 6
-  for (var index6 = 0; index6 < 4; index6++) {
-    var quizInput6 = parseInt(prompt(quizQuestions[5]));
-    console.log(userAnswered + quizInput6);
-    if (quizInput6 === 26) {
+  //create function to call quiz questions and evaluate user answers
+  function quiz() {
+    quizInput = prompt(yesOrNo + quizQuestions[count]).toLowerCase();
+    console.log(userAnswered + quizInput);
+    validAnswer();
+    if (quizInput === quizAns[count][0] || quizInput === quizAns[count][1]) {
       alert(correct);
-      console.log(userAnswered + quizInput6);
       countCorrect++;
-      console.log(countCorrect);
-      break;
+    } else if (valid === false){
+      alert(invalidAnswer);
+      count--;
+    } else {
+      alert(incorrect);
+    }
+    valid = false;
+    document.write('<p class="question">Question ' + (count + 1) + ': ' + quizQuestions[count] + '<br />Answer: ' + quizAnswers[count] + '<br />(Your answer: ' + quizInput + ')</p>');
+  }
+
+  //calls the guessing quiz function a set number of times
+  for (var count = 0; count < 5; count++) {
+    quiz();
+  }
+  function guessNum() {
+    var quizInput = parseInt(prompt(quizQuestions[5]));
+    console.log(userAnswered + quizInput);
+    if (quizInput === 26) {
+      alert(correct);
+      countCorrect++;
+      index6 = 5;
     }
     else {
-      if (quizInput6 < 26) {
+      if (quizInput < 26) {
         alert(tooFew + 'Attempts remaining: ' + (3 - index6));
       }
-      else if (quizInput6 > 26) {
+      else if (quizInput > 26) {
         alert(tooMany + 'Attempts remaining: ' + (3 - index6));
       }
       else {
         alert('Please type a number.');
       }
     }
-  };
+  }
+    // Quiz question 6
+  for (var index6 = 0; index6 < 4; index6++){
+    guessNum();
+  }
+  document.write('<p class="question">Question 6: ' + quizQuestions[5] + '<br />Answer: ' + quizAnswers[5] + '<br />(Your answer: ' + quizInput + ')</p>');
 
-  //Quiz question 7; outer for loop permits users 6 incorrect tries
-  for (var index7 = 0; index7 < 6; index7++) {
-    var quizInput7 = prompt(quizQuestions[6]).toLowerCase();
-    console.log(userAnswered + quizInput7);
+  function multiAnswer() {
+    var quizInput = prompt(quizQuestions[6]).toLowerCase();
+    console.log(userAnswered + quizInput);
     //Inner for loop and variables that compares quizInput7 with quizAnswer7 array items
     var subIndex7;
     var isCorrect = false;
     for (subIndex7 = 0; subIndex7 < 4; subIndex7++) {
-      console.log('inner for loop ' + quizAnswer7[subIndex7]);
-      if (quizInput7 === quizAnswer7[subIndex7]) {
+      if (quizInput === quizAnswer7[subIndex7]) {
         console.log(correct);
         isCorrect = true;
       }
@@ -134,33 +103,35 @@ if (answer1) {
       countCorrect++;
       console.log(countCorrect);
       alert(correct);
-      break;
+      index7 = 6;
+    } else {
+      alert(incorrect + ' Please try again!');
     }
   }
-
-  // Quiz question 8
-  var quizInput8 = parseInt(prompt(quizQuestions[7]));
-  console.log(userAnswered + quizInput8);
-  if (quizInput8 === quizAnswer8) {
-    alert(correct);
-    countCorrect++;
-    console.log(countCorrect);
+  //Quiz question 7; outer for loop permits users 6 incorrect tries
+  for (var index7 = 0; index7 < 6; index7++) {
+    multiAnswer();
   }
-  else {
-    alert(incorrect);
-    console.log(countCorrect);
+  document.write('<p class="question">Question 7: ' + quizQuestions[6] + '<br />Answer: ' + quizAnswers[6] + '<br />(Your answer: ' + quizInput + ')</p>');
+
+  //Quiz question 8
+  function treats() {
+    var quizInput8 = parseInt(prompt(quizQuestions[7]));
+    console.log(userAnswered + quizInput8);
+    if (quizInput8 === quizAnswer8) {
+      alert(correct);
+      countCorrect++;
+      console.log(countCorrect);
+    }
+    else {
+      alert(incorrect);
+      console.log(countCorrect);
+    }
+    document.write('<p class="question">Question 8: ' + quizQuestions[7] + '<br />Answer: ' + quizAnswers[7] + quizAnswer8 + '<br />(Your answer: ' + quizInput8 + ')</p>');
   }
 
-  // Show results to user in HTML
+  treats();
   document.write('<p class="intro">Now that you\'ve taken the quiz, here\'s your score and some more information about these two wonderful cats.</p><p id="score question">Your score: ' + countCorrect + '/8</p></section>');
-  document.write('<p class="question">Question 1: ' + quizQuestions[0] + '<br />Answer: ' + quizAnswers[0] + '<br />(Your answer: ' + quizInput1 + ')</p>');
-  document.write('<p class="question">Question 2: ' + quizQuestions[1] + '<br />Answer: ' + quizAnswers[1] + '<br />(Your answer: ' + quizInput2 + ')</p>');
-  document.write('<p class="question">Question 3: ' + quizQuestions[2] + '<br />Answer: ' + quizAnswers[2] + '<br />(Your answer: ' + quizInput3 + ')</p>');
-  document.write('<p class="question">Question 4: ' + quizQuestions[3] + '<br />Answer: ' + quizAnswers[3] + '<br />(Your answer: ' + quizInput4 + ')</p>');
-  document.write('<p class="question">Question 5: ' + quizQuestions[4] + '<br />Answer: ' + quizAnswers[4] + '<br />(Your answer: ' + quizInput5 + ')</p>');
-  document.write('<p class="question">Question 6: ' + quizQuestions[5] + '<br />Answer: ' + quizAnswers[5] + '<br />(Your answer: ' + quizInput6 + ')</p>');
-  document.write('<p class="question">Question 7: ' + quizQuestions[6] + '<br />Answer: ' + quizAnswers[6] + '<br />(Your answer: ' + quizInput7 + ')</p>');
-  document.write('<p class="question">Question 8: ' + quizQuestions[7] + '<br />Answer: ' + quizAnswers[7] + quizAnswer8 + '<br />(Your answer: ' + quizInput8 + ')</p>');
 }
 else {
   console.log('Sadly,' + userName + ' is not ready for a quiz on cats.');
