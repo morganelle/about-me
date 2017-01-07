@@ -1,40 +1,29 @@
 'use strict';
 
 var questions = ['question1', 'question2', 'question3','question4'];
-var answers = ['answer1','answer2', ['subAnswer1','subAnswer2'],['subAnswer3','subAnswer4']];
+var answers = ['answer1','answer2',['subAnswer1','subAnswer2'],['subAnswer3','subAnswer4']];
 var userAnswer;
 var correct;
 var points = 0;
 
 // Looks for correct answers in answer array, including nested arrays
-function evalu8() {
-  if (userAnswer === answers[count]) {
+function evalu8(eCount) {
+  if (userAnswer === answers[eCount]) {
+    console.log(userAnswer === answers[eCount]);
     correct = true;
-    console.log('question', + (count + 1), + correct);
+    console.log('user answer is', userAnswer);
+    console.log('answer ecount is', answers[eCount]);
+    console.log('question', + (eCount + 1), + correct);
   }
-  else if (Array.isArray(answers[count]) === true) {
-    nestedArray();
+  // Checks if answer is inside a nested array in the answers array
+  else if (answers[eCount].includes(userAnswer) === true) {
+    correct = true;
+    console.log('subarray question', + (eCount + 1), + correct);
   }
   else {
     correct = false;
-    console.log('question', + (count + 1), + 'correct:' + correct);
+    console.log('question', + (eCount + 1), + 'correct:' + correct);
   }
-}
-
-// Looks for answers that are nested arrays
-function nestedArray() {
-  for (var mcount = 0; mcount < answers[count].length; mcount++) {
-    console.log('array contains', + answers[count][mcount]);
-    var arrayAnswer = answers[count][mcount];
-    if (userAnswer === arrayAnswer) {
-      correct = true;
-      mcount = answers[count].length;
-    }
-    else {
-      correct = false;
-    }
-  }
-  console.log('question', + (count + 1), + 'correct:' + correct);
 }
 
 // Increments points for correct answers
@@ -45,23 +34,26 @@ function increment() {
 }
 
 // Writes to document
-function write() {
-  document.write('<p>Question ' + (count) + ':', + questions[count] + '<br /> Answer:', + answers[count] + '</p>');
+function write(wCount) {
+  document.write('<p>Question ' + (wCount + 1) + ': ' + questions[wCount] + '<br /> Answer:', + answers[wCount] + '</p>');
+  console.log('<p>Question ' + (wCount + 1) + ': ' + questions + '<br /> Answer:', + answers[wCount] + '</p>');
 }
 
 // Prompts users with questions and saves input
-function askUser() {
-  userAnswer = prompt(questions[count]);
+function askUser(aCount) {
+  console.log('aCount is', aCount);
+  userAnswer = prompt(questions[aCount]);
+  console.log('question aCount is', questions[aCount]);
   console.log('user said ' + userAnswer);
 }
 
 // Steps through questions
 for (var count = 0; count < questions.length; count++) {
-  askUser();
-  evalu8();
+  askUser(count);
+  evalu8(count);
   increment();
-  write();
-  console.log('points are', + points);
+  write(count);
+  console.log('point count: ', + points + ' out of ' + questions.length + ' possible.');
 }
 
 //
