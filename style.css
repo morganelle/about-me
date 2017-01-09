@@ -25,6 +25,14 @@ p.question {
   max-width: 800px;
 }
 
+span.correct {
+  color: #08987C;
+}
+
+span.incorrect {
+  color: #7E111B;
+}
+
 aside p {
   font-weight: bold;
 }
